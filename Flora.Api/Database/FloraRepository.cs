@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Flora.Api.Data;
 using Flora.Api.Interfaces;
@@ -32,6 +33,25 @@ namespace Flora.Api.Database
                 .Include(m => m.MaterialSpecifications)
                 .ThenInclude(z => z.Specification)
                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Bouquet>> GetBouquets()
+        {
+            return await _context.Bouquet
+                .Include(b => b.BouquetTypes)
+                .ThenInclude(d => d.Materials)
+                .ThenInclude(a => a.Material)
+                .ToListAsync();
+        }
+
+        public async Task<Bouquet> GetBouquet(int id) 
+        {
+            return await _context.Bouquet
+                .Where(b => b.BouquetId == id)
+                .Include(b => b.BouquetTypes)
+                .ThenInclude(d => d.Materials)
+                .ThenInclude(a => a.Material)
+                .FirstOrDefaultAsync();
         }
     }
 }

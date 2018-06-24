@@ -68,12 +68,12 @@ namespace Flora.Api.Data
                 .HasOne(d => d.BouquetDetail)
                 .WithMany(b => b.Materials)
                 .HasForeignKey(d => d.BouquetDetailId);
-            
+            /*
             modelBuilder.Entity<Arrangement>()
                 .HasOne(d => d.Material)
                 .WithMany(m => m.Arrangments)
                 .HasForeignKey(d => d.MaterialId);
-
+            */
             /* Seeding Data */
             modelBuilder.Entity<Material>()
                 .HasData(materials);
@@ -138,5 +138,6 @@ namespace Flora.Api.Data
         }
         public DbSet<Material> Materials { get; set; }
         public DbSet<Specification> Specifications { get; set; }
+        public DbSet<Bouquet> Bouquet { get; set; }
     }
 }

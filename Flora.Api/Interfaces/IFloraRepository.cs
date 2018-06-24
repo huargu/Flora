@@ -10,5 +10,7 @@ namespace Flora.Api.Interfaces
          void Delete<T>(T entity) where T: class;
 
          Task<IEnumerable<Material>> GetMaterials();
+         Task<IEnumerable<Bouquet>> GetBouquets();
+         Task<Bouquet> GetBouquet(int id);
     }
 }
