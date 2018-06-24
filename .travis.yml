@@ -7,3 +7,5 @@ install:
   - dotnet restore Flora.sln
 script:
   - dotnet build
+  - dotnet test Flora.Tests/Flora.Tests.csproj
+  - dotnet test Flora.IntegrationTests/Flora.IntegrationTests.csproj

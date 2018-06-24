@@ -2,4 +2,6 @@
 /Flora.Api/obj
 /Flora.Tests/bin
 /Flora.Tests/obj
+/Flora.IntegrationTests/bin
+/Flora.IntegrationTests/obj
 /.vscode

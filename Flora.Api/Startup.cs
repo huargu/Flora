@@ -33,8 +33,7 @@ namespace Flora.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>( x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            
+            services.AddDbContext<DataContext>( x => x.UseSqlite(@"Data Source=../Flora.Api/Flora.db"));
             services.AddScoped<IFloraRepository, FloraRepository>();
             services.AddAutoMapper();
             services.AddMvc()
@@ -62,7 +61,6 @@ namespace Flora.Api
             {
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(c =>

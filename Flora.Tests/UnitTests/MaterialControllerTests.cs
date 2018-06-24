@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using AutoMapper;
 using Flora.Api.Controllers;
@@ -15,10 +16,6 @@ namespace Flora.Tests.UnitTests
 {
     public class MaterialControllerTests
     {
-        public MaterialControllerTests()
-        {
-            
-        }
         [Fact]
         public async Task GetMaterialsTest()
         {
@@ -39,8 +36,7 @@ namespace Flora.Tests.UnitTests
 
             var model = okObjectResult.Value as IEnumerable<MaterialDTO>;
             Assert.NotNull(model);
-
-            Assert.Equal(1, model.Count());
+            Assert.Single(model);
         }
 
         private List<Material> GetTestMaterials()
