@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
+using Flora.Api.Dtos;
 using Flora.Api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,8 +11,10 @@ namespace Flora.Api.Controllers
     public class MaterialController : Controller
     {
         private readonly IFloraRepository _repo;
-        public MaterialController(IFloraRepository repo)
+        private readonly IMapper _mapper;
+        public MaterialController(IFloraRepository repo, IMapper mapper)
         {
+            this._mapper = mapper;
             this._repo = repo;
         }
 
@@ -18,7 +23,9 @@ namespace Flora.Api.Controllers
         {
             var materials = await _repo.GetMaterials();
 
-            return Ok(materials);
+            var materialToReturn = _mapper.Map<IEnumerable<MaterialDTO>>(materials);
+
+            return Ok(materialToReturn);
         }
     }
 }

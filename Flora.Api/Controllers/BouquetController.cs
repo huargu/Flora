@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
+using Flora.Api.Dtos;
 using Flora.Api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,8 +11,10 @@ namespace Flora.Api.Controllers
     public class BouquetController : Controller
     {
         private readonly IFloraRepository _repo;
-        public BouquetController(IFloraRepository repo)
+        private readonly IMapper _mapper;
+        public BouquetController(IFloraRepository repo, IMapper mapper)
         {
+            this._mapper = mapper;
             this._repo = repo;
         }
 
@@ -18,7 +23,9 @@ namespace Flora.Api.Controllers
         {
             var bouquets = await _repo.GetBouquets();
 
-            return Ok(bouquets);
+            var bouquetsToReturn = _mapper.Map<IEnumerable<BouquetDTO>>(bouquets);
+
+            return Ok(bouquetsToReturn);
         }
 
         [HttpGet("{id}", Name = "GetBouquet")]
@@ -26,7 +33,9 @@ namespace Flora.Api.Controllers
         {
             var bouquet = await _repo.GetBouquet(id);
 
-            return Ok(bouquet);
+            var bouquetToReturn = _mapper.Map<BouquetDTO>(bouquet);
+
+            return Ok(bouquetToReturn);
         }
     }
 }

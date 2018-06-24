@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Flora.Api.Data;
 using Flora.Api.Database;
 using Flora.Api.Interfaces;
@@ -33,6 +34,7 @@ namespace Flora.Api
             services.AddDbContext<DataContext>( x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddScoped<IFloraRepository, FloraRepository>();
+            services.AddAutoMapper();
             services.AddMvc()
                 .AddJsonOptions(
                     o => {
