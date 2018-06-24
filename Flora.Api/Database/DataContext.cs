@@ -8,8 +8,8 @@ namespace Flora.Api.Data
     {
         Specification[] specifications = new []
         {
-            new Specification { SpecificationId = 2, Name = "Dikenli" },
             new Specification { SpecificationId = 1, Name = "Çiçekli" },
+            new Specification { SpecificationId = 2, Name = "Dikenli" },
             new Specification { SpecificationId = 3, Name = "Yapraklı" }
         };
 
@@ -42,10 +42,10 @@ namespace Flora.Api.Data
                 .WithMany(m => m.MaterialSpecifications)
                 .HasForeignKey(ms => ms.MaterialId);
 
-            modelBuilder.Entity<MaterialSpecification>()
-                .HasOne(ms => ms.Specification)
-                .WithMany(m => m.MaterialSpecifications)
-                .HasForeignKey(ms => ms.SpecificationId);
+            // modelBuilder.Entity<MaterialSpecification>()
+            //     .HasOne(ms => ms.Specification)
+            //     .WithMany(m => m.MaterialSpecifications)
+            //     .HasForeignKey(ms => ms.SpecificationId);
             
             modelBuilder.Entity<Material>()
                 .HasData(materials);

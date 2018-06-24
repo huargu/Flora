@@ -7,6 +7,6 @@ namespace Flora.Api.Models
         public int SpecificationId { get; set; }
         public string Name { get; set; }
 
-        public ICollection<MaterialSpecification> MaterialSpecifications { get; set; }
+        //public ICollection<MaterialSpecification> MaterialSpecifications { get; set; }
     }
 }
