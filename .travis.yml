@@ -1,0 +1,9 @@
+language: csharp
+dist: trusty
+dotnet: 2.1.300
+mono: none
+solution: "./Flora.sln"
+install:
+  - dotnet restore Flora.sln
+script:
+  - dotnet build
