@@ -8,5 +8,6 @@ namespace Flora.Api.Models
         public string Name { get; set; }
 
         public ICollection<MaterialSpecification> MaterialSpecifications { get; set; }
+        public ICollection<Arrangement> Arrangments { get; set; }
     }
 }

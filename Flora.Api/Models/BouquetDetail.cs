@@ -9,5 +9,7 @@ namespace Flora.Api.Models
         public string Size { get; set; }
         public decimal Price { get; set; }
         public ICollection<Arrangement> Materials { get; set; }
+        public int BouquetId { get; set; }
+        public Bouquet Bouquet { get; set; }
     }
 }

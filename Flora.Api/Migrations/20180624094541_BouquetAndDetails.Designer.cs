@@ -2,14 +2,16 @@
 using Flora.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Flora.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180624094541_BouquetAndDetails")]
+    partial class BouquetAndDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,27 +35,6 @@ namespace Flora.Api.Migrations
                     b.HasIndex("MaterialId");
 
                     b.ToTable("Arrangement");
-
-                    b.HasData(
-                        new { ArrangmentId = 1, BouquetDetailId = 1, MaterialCount = 10, MaterialId = 1 },
-                        new { ArrangmentId = 2, BouquetDetailId = 1, MaterialCount = 1, MaterialId = 4 },
-                        new { ArrangmentId = 3, BouquetDetailId = 2, MaterialCount = 25, MaterialId = 1 },
-                        new { ArrangmentId = 4, BouquetDetailId = 2, MaterialCount = 1, MaterialId = 4 },
-                        new { ArrangmentId = 5, BouquetDetailId = 3, MaterialCount = 50, MaterialId = 1 },
-                        new { ArrangmentId = 6, BouquetDetailId = 3, MaterialCount = 1, MaterialId = 4 },
-                        new { ArrangmentId = 7, BouquetDetailId = 4, MaterialCount = 5, MaterialId = 1 },
-                        new { ArrangmentId = 8, BouquetDetailId = 4, MaterialCount = 20, MaterialId = 2 },
-                        new { ArrangmentId = 9, BouquetDetailId = 4, MaterialCount = 1, MaterialId = 4 },
-                        new { ArrangmentId = 10, BouquetDetailId = 5, MaterialCount = 7, MaterialId = 1 },
-                        new { ArrangmentId = 11, BouquetDetailId = 5, MaterialCount = 20, MaterialId = 2 },
-                        new { ArrangmentId = 12, BouquetDetailId = 5, MaterialCount = 1, MaterialId = 4 },
-                        new { ArrangmentId = 13, BouquetDetailId = 6, MaterialCount = 10, MaterialId = 1 },
-                        new { ArrangmentId = 14, BouquetDetailId = 6, MaterialCount = 20, MaterialId = 2 },
-                        new { ArrangmentId = 15, BouquetDetailId = 6, MaterialCount = 1, MaterialId = 4 },
-                        new { ArrangmentId = 16, BouquetDetailId = 7, MaterialCount = 1, MaterialId = 3 },
-                        new { ArrangmentId = 17, BouquetDetailId = 8, MaterialCount = 2, MaterialId = 3 },
-                        new { ArrangmentId = 18, BouquetDetailId = 9, MaterialCount = 5, MaterialId = 3 }
-                    );
                 });
 
             modelBuilder.Entity("Flora.Api.Models.Bouquet", b =>
